@@ -52,6 +52,7 @@ Area.bottom = 0.50 * 0.40;
 Area.left = 0.20 * 0.50;         
 Area.right = 0.20 * 0.50;      
 Area.rad = 0.20 * 0.50;        % Radiator surface area
+Area.solar_panel = 0.20 * 0.50;
 
 % --- SIM PARAMETERS ---
 P.driving_speed = 0.75;     % [m/s]

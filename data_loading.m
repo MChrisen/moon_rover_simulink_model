@@ -1,11 +1,11 @@
 % ==========================================
-% PART 1: SLOPE & MASTER DISTANCE
+% SLOPE & MASTER DISTANCE
 % ==========================================
 % 1. Load the Quickmap Slope Data
 route_data = readtable('slope_data.csv');
 
 % 2. Extract Distance and Convert to Meters.
-% Quickmap exported 'position' in kilometers. We must convert to meters.
+% Quickmap exported 'position' in kilometers. Converts to meters
 distance_km = route_data.position; 
 distance_m = distance_km * 1000;
 
@@ -17,7 +17,7 @@ slope_degrees = route_data.TerrainSlope;
 slope_radians = deg2rad(slope_degrees);
 
 % ==========================================
-% PART 2: TEMPERATURE & ILLUMINATION & HEADING
+% TEMPERATURE & ILLUMINATION & HEADING
 % ==========================================
 % Load the additional Quickmap CSV files
 temp_data = readtable('temp_data.csv');
@@ -31,7 +31,7 @@ illum_dist_m = illum_data.position * 1000;
 raw_temp = temp_data.PolarSummerMaxTemp; 
 raw_illum = illum_data.SunVisibility60m;
 
-% Interpolate the data so it perfectly aligns with master 'distance_m' array
+% Interpolate the data so it aligns with master 'distance_m' array
 aligned_temp = interp1(temp_dist_m, raw_temp, distance_m, 'linear', 'extrap');
 aligned_illum = interp1(illum_dist_m, raw_illum, distance_m, 'linear', 'extrap');
 
@@ -51,7 +51,7 @@ delta_lon(delta_lon < -180) = delta_lon(delta_lon < -180) + 360;
 % On the moon, 1 degree of Latitude is ~30,320 meters everywhere
 delta_y_meters = delta_lat * 30320; 
 
-% 1 degree of Longitude shrinks based on the cosine of the latitude!
+% 1 degree of Longitude shrinks based on the cosine of the latitude
 delta_x_meters = delta_lon .* (30320 .* cosd(lat(1:end-1)));
 
 % 4. Calculate the true physical heading using meters, not degrees
@@ -62,7 +62,7 @@ heading_rad = [heading_rad; heading_rad(end)];
 
 
 % ==========================================
-% PART 3: SEND TO SIMULINK WORKSPACE
+% SEND TO SIMULINK WORKSPACE
 % ==========================================
 % 4. Send the variables to the Base Workspace for Simulink
 assignin('base', 'route_distance', distance_m);
@@ -71,7 +71,7 @@ assignin('base', 'route_temp', aligned_temp);
 assignin('base', 'route_illum', aligned_illum);
 assignin('base', 'route_heading', heading_rad);
 
-% Find the exact total length of the route for the Modulo block
+% Find the total length of route
 route_max_dist = max(distance_m);
 assignin('base', 'route_max_dist', route_max_dist);
 
