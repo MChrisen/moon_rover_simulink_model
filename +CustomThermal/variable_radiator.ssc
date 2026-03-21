@@ -1,0 +1,42 @@
+component variable_radiator
+    % Variable Area Radiator
+    % Models radiative heat transfer between two thermal nodes. 
+
+    nodes
+        A = foundation.thermal.thermal; 
+        B = foundation.thermal.thermal; 
+    end
+
+    inputs
+        Area = { 0.1, 'm^2' }; 
+    end
+
+    parameters
+        epsilon = { 0.91, '1' }; % Emissivity
+    end
+
+    variables
+        Heat_Flow = { 0, 'W' }; % Internal heat flow variable
+    end
+
+    branches
+        Heat_Flow : A.Q -> B.Q; 
+    end
+
+    equations
+        let
+            sigma = { 5.67e-8, 'W/(m^2*K^4)' }; % Stefan-Boltzmann Constant
+            safe_Area = if Area > {1e-6, 'm^2'}, Area else {1e-6, 'm^2'} end;
+        in
+            % The core Stefan-Boltzmann radiation equation
+            Heat_Flow == sigma * epsilon * safe_Area * (A.T^4 - B.T^4);
+        end
+    end
+
+    % THIS IS THE FIX: Formal visual layout instructions for R2025b
+    annotations
+        [A] : Side=left;
+        [B] : Side=right;
+        [Area] : Side=bottom;
+    end
+end

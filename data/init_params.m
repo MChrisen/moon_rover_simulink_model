@@ -29,6 +29,14 @@ Spec.cp_mli_J_kgK = 1000;
 Spec.mass_PCM = 0.7; % [kg]
 Spec.cp_PCM_J_kgK = 2000; % octadecane //
 
+% Cover (area, see solar panel)
+Spec.mass_cover = 2.7;
+Spec.cp_cover = 896;
+Spec.epsilon_back_cover = 0.91;
+Spec.epsilon_front_cover = 0.85;
+Spec.alpha_front_cover = 0.91;
+
+Spec.solar_eff = 0.30;
 
 % Internal Conduction (Adjusted for realistic Contact Resistance)
 Cond.area_core_chassis = 0.04; 
@@ -59,7 +67,7 @@ P.driving_speed = 0.75;     % [m/s]
 P.mass_rover = 15;          % [kg]
 
 P.temp_load_shedding_off = 300; % [K]
-P.temp_load_shedding_on = 328;  % [K]
+P.temp_load_shedding_on = 302;  % [K]
 
 P.power_avionics = 20; % [W]
 
