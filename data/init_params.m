@@ -73,6 +73,10 @@ P.power_avionics = 20; % [W]
 
 P.gamma_start_sun = 45; % Sun starting azimuth [degrees]
 P.z_start_sun = 89.5; % Sun starting zenith [degrees]
+
+P.power_digging = 125; % [W]
+P.time_digging = 60; % [s]
+
 % --- INITIAL CONDITIONS ---
 IC.temp_core = 293; % [K]
 IC.temp_chassis = 293; % [K]
