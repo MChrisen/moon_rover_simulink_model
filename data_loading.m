@@ -2,7 +2,6 @@
 % MASTER ROUTE DATA LOADING
 % ==========================================
 % 1. Load the unified Quickmap CSV file
-% (Change 'master_route_data.csv' to whatever your actual file is named)
 route_data = readtable('quickmap_data.csv');
 
 % 2. Extract Distance and Convert to Meters

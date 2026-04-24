@@ -4,7 +4,7 @@ component variable_radiator
     % The physical radiating area is dynamically controlled by a physical signal.
     % 
     % Connect port A to the radiating body and port B to the environment. 
-    % The 'Area' port accepts a physical signal (in m^2) to dynamically open/close the louver.
+    % The 'Area' port accepts a physical signal (in m^2) to dynamically open/close the cover.
 
     nodes
         A = foundation.thermal.thermal; % A:left
@@ -23,7 +23,7 @@ component variable_radiator
         Q = { 0, 'W' }; % Heat flow rate
     end
 
-    % THIS IS THE FIX: Declare the physical energy flow from A to B here
+    % Declare the physical energy flow from A to B
     branches
         Q : A.Q -> B.Q; 
     end
@@ -31,10 +31,10 @@ component variable_radiator
     equations
         let
             sigma = { 5.67e-8, 'W/(m^2*K^4)' }; % Stefan-Boltzmann Constant
-            % Safety net: Prevents solver from crashing if input drops below zero
+            % Prevents solver from crashing if input drops below zero
             safe_Area = if Area > {1e-6, 'm^2'}, Area else {1e-6, 'm^2'} end;
         in
-            % The core Stefan-Boltzmann radiation equation
+            % The Stefan-Boltzmann radiation equation
             Q == sigma * epsilon * safe_Area * (A.T^4 - B.T^4);
         end
     end
