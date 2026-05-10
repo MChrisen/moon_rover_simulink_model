@@ -37,7 +37,7 @@ Spec.alpha_front_cover = 0.91;
 
 Spec.solar_eff = 0.30;
 
-% Internal Conduction (Adjusted for realistic Contact Resistance)
+% Internal Conduction
 Cond.area_core_chassis = 0.0312; 
 Cond.thick_core_chassis = 0.0254; 
 Cond.k_core_chassis = 1.38; % stycast
@@ -67,7 +67,7 @@ Area.solar_panel = 0.20 * 0.50;
 
 % --- SIM PARAMETERS ---
 P.driving_speed = 0.75;     % [m/s]
-P.mass_rover = 15;          % [kg] %MANGLER
+P.mass_rover = 17.37;          % [kg] %MANGLER
 
 P.temp_load_shedding_off = 300; % [K]
 P.temp_load_shedding_on = 302;  % [K]
@@ -82,20 +82,22 @@ P.time_digging = 30; % [s]
 P.power_load = 6.98;
 P.power_unload = 4.9;
 
+P.mass_PCM = 0.7; % [kg]
+
 % --- INITIAL CONDITIONS ---
-IC.temp_core = 293; % [K]
-IC.temp_chassis = 293; % [K]
-IC.temp_rad = 293; % [K]
-IC.temp_PCM = 293; % [K]
+IC.temp_core = 301; % [K]
+IC.temp_chassis = 299; % [K]
+IC.temp_rad = 300; % [K]
+IC.temp_PCM = 300; % [K]
 
 IC.power_motor = 0.5; % [W]
 
 % Initial MLI temp [K]
-IC.temp_MLI_front = 220; 
-IC.temp_MLI_back = 220;
+IC.temp_MLI_front = 242; 
+IC.temp_MLI_back = 265;
 IC.temp_MLI_top = 220;
-IC.temp_MLI_bottom = 220;
-IC.temp_MLI_right = 220;
-IC.temp_MLI_left= 220;
+IC.temp_MLI_bottom = 230;
+IC.temp_MLI_right = 272;
+IC.temp_MLI_left= 248;
 
 

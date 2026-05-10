@@ -16,13 +16,12 @@ elevation_m = route_data.TerrainHeight;
 % TEMPERATURE & ILLUMINATION
 % ==========================================
 
-% NOTE: MATLAB's readtable() automatically removes spaces from CSV headers. 
-% "Sun Visibility 60m" becomes "SunVisibility60m"
-route_temp = route_data.MaximumGlobalTemperatures; 
+% "Sun Visibility 60m" bliver automatisk "SunVisibility60m"
+route_temp = route_data.PolarWinterMinTemp; 
 route_illum = route_data.SunVisibility60m;
 
 % ==========================================
-% CALCULATE ROVER HEADING (POLAR CORRECTED)
+% CALCULATE ROVER HEADING
 % ==========================================
 lat = route_data.lat;
 lon = route_data.lon;
