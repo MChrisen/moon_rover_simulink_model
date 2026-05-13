@@ -67,7 +67,7 @@ Area.solar_panel = 0.20 * 0.50;
 
 % --- SIM PARAMETERS ---
 P.driving_speed = 0.75;     % [m/s]
-P.mass_rover = 17.37;          % [kg] %MANGLER
+P.mass_rover = 15.4;          % [kg] %MANGLER
 
 P.temp_load_shedding_off = 300; % [K]
 P.temp_load_shedding_on = 302;  % [K]
@@ -83,6 +83,7 @@ P.power_load = 6.98;
 P.power_unload = 4.9;
 
 P.mass_PCM = 0.7; % [kg]
+P.bat_AH = 43;
 
 % --- INITIAL CONDITIONS ---
 IC.temp_core = 301; % [K]
@@ -100,4 +101,8 @@ IC.temp_MLI_bottom = 230;
 IC.temp_MLI_right = 272;
 IC.temp_MLI_left= 248;
 
+% For sensitivity Analysis
+
+test_pcm_mass = P.mass_PCM;
+test_bat_AH = P.bat_AH;
 
