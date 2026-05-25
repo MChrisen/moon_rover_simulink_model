@@ -33,7 +33,7 @@ component variable_radiator
         end
     end
 
-    % THIS IS THE FIX: Formal visual layout instructions for R2025b
+
     annotations
         [A] : Side=left;
         [B] : Side=right;
